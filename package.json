@@ -27,8 +27,8 @@
     "node": "*"
   },
   "scripts": {
-    "test": "grunt test",
-    "watch": "coffee -c -o tasks/ -w src/"
+    "watch": "cake watch",
+    "build": "cake build"
   },
   "devDependencies": {
     "grunt": "~0.3.17"
