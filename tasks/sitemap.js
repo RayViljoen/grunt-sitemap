@@ -2,11 +2,10 @@
 (function() {
 
   module.exports = function(grunt) {
-    var fs, moment, path, xml;
+    var fs, path, xml;
     path = require('path');
     fs = require('fs');
     xml = require('xmlbuilder');
-    moment = require('moment');
     return grunt.registerMultiTask('sitemap', 'sitemap description', function() {
       var changefreq, file, files, homeErrMess, pattern, priority, root, rootWarnMess, sitemap, sitemapPath, sitemapStr, url, urlNode, _i, _len;
       url = grunt.config.get('pkg.homepage') || this.data.homepage;
@@ -33,7 +32,7 @@
         urlPath = rawUrlPath.replace(/(index)\.[A-z]+$/, '', 'i');
         fileStat.url = url + urlPath;
         mtime = (fs.statSync(file).mtime).getTime();
-        fileStat.mtime = moment(mtime).format();
+        fileStat.mtime = new Date(mtime).toISOString();
         return fileStat;
       });
       sitemap = xml.create('urlset', {

@@ -37,7 +37,6 @@
     "gruntplugin"
   ],
   "dependencies": {
-    "xmlbuilder": "~0.4.2",
-    "moment": "~1.7.2"
+    "xmlbuilder": "~0.4.2"
   }
 }

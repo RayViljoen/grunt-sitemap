@@ -13,9 +13,6 @@ module.exports = (grunt) ->
 	# https://github.com/oozcitak/xmlbuilder-js
 	xml = require 'xmlbuilder'
 
-	# http://momentjs.com/
-	moment = require 'moment'
-
 	# Please see the grunt documentation for more information regarding task and
 	# helper creation: https://github.com/cowboy/grunt/blob/master/docs/toc.md
 
@@ -73,8 +70,8 @@ module.exports = (grunt) ->
 			# Get last modified time
 			mtime = (fs.statSync(file).mtime).getTime()
 
-			# Format mtime
-			fileStat.mtime = moment(mtime).format()
+			# Format mtime to ISO (same as +00:00)
+			fileStat.mtime = new Date(mtime).toISOString()
 
 			# Return fileStat object
 			fileStat
