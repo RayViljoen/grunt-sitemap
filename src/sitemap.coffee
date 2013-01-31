@@ -10,9 +10,6 @@ module.exports = (grunt) ->
 	path = require 'path'
 	fs = require 'fs'
 
-	# https://github.com/oozcitak/xmlbuilder-js
-	xml = require 'xmlbuilder'
-
 	# Please see the grunt documentation for more information regarding task and
 	# helper creation: https://github.com/cowboy/grunt/blob/master/docs/toc.md
 
@@ -80,29 +77,24 @@ module.exports = (grunt) ->
 		# 		Build xml
 		# -----------------------
 		
-		# Create xml root
-		sitemap = xml.create 'urlset',
-				{'version':'1.0', 'encoding':'UTF-8'}
-
-		# Add root schema
-		sitemap.attribute 'xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9/'
+		xmlStr  = '<?xml version="1.0" encoding="UTF-8"?>\n'
+		xmlStr += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9/">\n'
 
 		# Create url nodes
 		for file in files
-			urlNode = sitemap.e 'url'
-			urlNode.e 'loc', file.url
-			urlNode.e 'lastmod', file.mtime
-			urlNode.e 'changefreq', changefreq
-			urlNode.e 'priority', priority
+			xmlStr += '<url>\n'
+			xmlStr += "  <loc>#{file.url}</loc>\n"
+			xmlStr += "  <lastmod>#{file.mtime}</lastmod>\n"
+			xmlStr += "  <changefreq>#{changefreq}</changefreq>\n"
+			xmlStr += "  <priority>#{priority}</priority>\n"
+			xmlStr += "</url>\n"
 
-		# Finalise xml to string
-		sitemapStr = sitemap.end
-			'pretty': true, 'indent': '  '
-			'newline': '\n'
+		# Close xml
+		xmlStr += '</urlset>'
 
 		# Write sitemap to root
 		sitemapPath = path.join root, 'sitemap.xml'
-		grunt.file.write sitemapPath, sitemapStr
+		grunt.file.write sitemapPath, xmlStr
 
 
 		grunt.log.writeln 'Sitemap created successfully'

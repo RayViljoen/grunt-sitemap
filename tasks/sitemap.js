@@ -2,12 +2,11 @@
 (function() {
 
   module.exports = function(grunt) {
-    var fs, path, xml;
+    var fs, path;
     path = require('path');
     fs = require('fs');
-    xml = require('xmlbuilder');
     return grunt.registerMultiTask('sitemap', 'sitemap description', function() {
-      var changefreq, file, files, homeErrMess, pattern, priority, root, rootWarnMess, sitemap, sitemapPath, sitemapStr, url, urlNode, _i, _len;
+      var changefreq, file, files, homeErrMess, pattern, priority, root, rootWarnMess, sitemapPath, url, xmlStr, _i, _len;
       url = grunt.config.get('pkg.homepage') || this.data.homepage;
       if (url.slice(-1) !== '/') {
         url += '/';
@@ -35,26 +34,20 @@
         fileStat.mtime = new Date(mtime).toISOString();
         return fileStat;
       });
-      sitemap = xml.create('urlset', {
-        'version': '1.0',
-        'encoding': 'UTF-8'
-      });
-      sitemap.attribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9/');
+      xmlStr = '<?xml version="1.0" encoding="UTF-8"?>\n';
+      xmlStr += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9/">\n';
       for (_i = 0, _len = files.length; _i < _len; _i++) {
         file = files[_i];
-        urlNode = sitemap.e('url');
-        urlNode.e('loc', file.url);
-        urlNode.e('lastmod', file.mtime);
-        urlNode.e('changefreq', changefreq);
-        urlNode.e('priority', priority);
+        xmlStr += '<url>\n';
+        xmlStr += "  <loc>" + file.url + "</loc>\n";
+        xmlStr += "  <lastmod>" + file.mtime + "</lastmod>\n";
+        xmlStr += "  <changefreq>" + changefreq + "</changefreq>\n";
+        xmlStr += "  <priority>" + priority + "</priority>\n";
+        xmlStr += "</url>\n";
       }
-      sitemapStr = sitemap.end({
-        'pretty': true,
-        'indent': '  ',
-        'newline': '\n'
-      });
+      xmlStr += '</urlset>';
       sitemapPath = path.join(root, 'sitemap.xml');
-      grunt.file.write(sitemapPath, sitemapStr);
+      grunt.file.write(sitemapPath, xmlStr);
       grunt.log.writeln('Sitemap created successfully');
       grunt.log.writeln('OK');
       if (grunt.task.current.errorCount) {

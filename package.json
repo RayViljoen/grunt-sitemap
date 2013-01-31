@@ -36,7 +36,5 @@
   "keywords": [
     "gruntplugin"
   ],
-  "dependencies": {
-    "xmlbuilder": "~0.4.2"
-  }
+  "dependencies": {}
 }
