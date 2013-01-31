@@ -14,7 +14,7 @@ module.exports = (grunt) ->
 	# helper creation: https://github.com/cowboy/grunt/blob/master/docs/toc.md
 
 	# ==========================================================================
-	# TASKS
+	# 	TASKS
 	# ==========================================================================
 
 	grunt.registerMultiTask 'sitemap', 'sitemap description', ->
@@ -96,15 +96,9 @@ module.exports = (grunt) ->
 		sitemapPath = path.join root, 'sitemap.xml'
 		grunt.file.write sitemapPath, xmlStr
 
-
 		grunt.log.writeln 'Sitemap created successfully'
 		grunt.log.writeln 'OK'
 
 		# Return true / false
 		if grunt.task.current.errorCount then no else yes
-
-
-
-
-
 
