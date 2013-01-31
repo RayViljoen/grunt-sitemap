@@ -1,0 +1,43 @@
+{
+  "name": "grunt-sitemap",
+  "description": "Grunt sitemap generator plugin",
+  "version": "0.1.0",
+  "homepage": "https://github.com/RayViljoen/grunt-sitemap",
+  "author": {
+    "name": "Ray Viljoen",
+    "email": "rayviljoen@me.com",
+    "url": "rayviljoen.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/RayViljoen/grunt-sitemap.git"
+  },
+  "bugs": {
+    "url": "https://github.com/RayViljoen/grunt-sitemap/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/RayViljoen/grunt-sitemap/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "grunt.js",
+  "bin": "bin/grunt-sitemap",
+  "engines": {
+    "node": "*"
+  },
+  "scripts": {
+    "test": "grunt test",
+    "watch": "coffee -c -o tasks/ -w src/"
+  },
+  "devDependencies": {
+    "grunt": "~0.3.17"
+  },
+  "keywords": [
+    "gruntplugin"
+  ],
+  "dependencies": {
+    "xmlbuilder": "~0.4.2",
+    "moment": "~1.7.2"
+  }
+}
