@@ -38,6 +38,12 @@ Add this line to your project's `grunt.js`:
 	Site (public root) directory relative to your grunt.js file.
 	This is where indexing will begin and your sitemap be saved to.
 
+* **pattern**: `String` *(`/**/*.html` by default)*
+
+	Pattern to match website files. Defaults to any (deep) `.html` files.
+	Excludes `404.html` by default and converts `index.html` to directory path `/`.
+	See [minimatch](https://github.com/isaacs/minimatch) for more on pattern matching.
+
 * **homepage**: `String` *(pulled from package.json by default)*
 	
 	Site URL including protocol: e.g. `http://www.example.com`
