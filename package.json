@@ -34,7 +34,9 @@
     "grunt": "~0.3.17"
   },
   "keywords": [
-    "gruntplugin"
+    "gruntplugin",
+    "sitemap",
+    "seo"
   ],
   "dependencies": {}
 }
