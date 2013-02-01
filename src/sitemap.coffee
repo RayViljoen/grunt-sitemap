@@ -84,7 +84,7 @@ module.exports = (grunt) ->
 		# -----------------------
 		
 		xmlStr  = '<?xml version="1.0" encoding="UTF-8"?>\n'
-		xmlStr += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9/">\n'
+		xmlStr += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
 
 		# Create url nodes
 		for file in files

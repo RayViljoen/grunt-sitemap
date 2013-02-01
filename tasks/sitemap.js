@@ -39,7 +39,7 @@
       });
       files = grunt.utils._.compact(files);
       xmlStr = '<?xml version="1.0" encoding="UTF-8"?>\n';
-      xmlStr += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9/">\n';
+      xmlStr += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
       for (_i = 0, _len = files.length; _i < _len; _i++) {
         file = files[_i];
         xmlStr += '<url>\n';
