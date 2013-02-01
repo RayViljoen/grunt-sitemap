@@ -22,11 +22,19 @@ module.exports = (grunt) ->
 		# Homepage from pkg
 		url = grunt.config.get('pkg.homepage') or @data.homepage
 
+		# Check homepage is set
+		homeErrMess = 'Requires "homepage" parameter. Sitemap was not created.'
+		grunt.fail.warn(homeErrMess, 3) unless url
+
 		# Add trailing slash to url if not there
 		url += '/' unless url[-1..] is '/'
 
 		# Site root dir
 		root = path.normalize (@data.siteRoot or '.')
+
+		# Check a site root was set
+		rootWarnMess = 'No "siteRoot" parameter defined. Using current directory.'
+		grunt.log.subhead rootWarnMess if root is '.'
 
 		# changereq setting
 		changefreq = @data.changefreq or 'daily'
@@ -37,20 +45,15 @@ module.exports = (grunt) ->
 
 		# File pattern
 		pattern = path.join root, (@data.pattern or '/**/*.html')
-
-		# Check homepage is set
-		homeErrMess = 'Requires "homepage" parameter. Sitemap was not created.'
-		grunt.fail.warn(homeErrMess, 3) unless url
-
-		# Check a site root was set
-		rootWarnMess = 'No "siteRoot" parameter defined. Using current directory.'
-		grunt.log.subhead rootWarnMess if root is '.'
 		
 		# Glob root
 		files = grunt.file.expand pattern
 
 		# Remove root from path and prepend homepage url
 		files = grunt.utils._.map files, (file) ->
+
+			# Do not include 404 page
+			return no if file.match /404\.html$/i
 
 			# Create object with url an mtime
 			fileStat = {}
@@ -72,6 +75,9 @@ module.exports = (grunt) ->
 
 			# Return fileStat object
 			fileStat
+
+		# Remove any falsy values (404.html returns false)
+		files = grunt.utils._.compact files
 
 		# -----------------------
 		# 		Build xml

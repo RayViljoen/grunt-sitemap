@@ -8,24 +8,27 @@
     return grunt.registerMultiTask('sitemap', 'sitemap description', function() {
       var changefreq, file, files, homeErrMess, pattern, priority, root, rootWarnMess, sitemapPath, url, xmlStr, _i, _len;
       url = grunt.config.get('pkg.homepage') || this.data.homepage;
-      if (url.slice(-1) !== '/') {
-        url += '/';
-      }
-      root = path.normalize(this.data.siteRoot || '.');
-      changefreq = this.data.changefreq || 'daily';
-      priority = (this.data.priority || 0.5).toString();
-      pattern = path.join(root, this.data.pattern || '/**/*.html');
       homeErrMess = 'Requires "homepage" parameter. Sitemap was not created.';
       if (!url) {
         grunt.fail.warn(homeErrMess, 3);
       }
+      if (url.slice(-1) !== '/') {
+        url += '/';
+      }
+      root = path.normalize(this.data.siteRoot || '.');
       rootWarnMess = 'No "siteRoot" parameter defined. Using current directory.';
       if (root === '.') {
         grunt.log.subhead(rootWarnMess);
       }
+      changefreq = this.data.changefreq || 'daily';
+      priority = (this.data.priority || 0.5).toString();
+      pattern = path.join(root, this.data.pattern || '/**/*.html');
       files = grunt.file.expand(pattern);
       files = grunt.utils._.map(files, function(file) {
         var fileStat, mtime, rawUrlPath, urlPath;
+        if (file.match(/404\.html/i)) {
+          return false;
+        }
         fileStat = {};
         rawUrlPath = file.replace(root, '');
         urlPath = rawUrlPath.replace(/(index)\.[A-z]+$/, '', 'i');
@@ -34,6 +37,7 @@
         fileStat.mtime = new Date(mtime).toISOString();
         return fileStat;
       });
+      files = grunt.utils._.compact(files);
       xmlStr = '<?xml version="1.0" encoding="UTF-8"?>\n';
       xmlStr += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9/">\n';
       for (_i = 0, _len = files.length; _i < _len; _i++) {
