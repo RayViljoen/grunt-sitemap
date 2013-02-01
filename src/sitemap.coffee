@@ -20,7 +20,7 @@ module.exports = (grunt) ->
 	grunt.registerMultiTask 'sitemap', 'sitemap description', ->
 		
 		# Homepage from pkg
-		url = grunt.config.get('pkg.homepage') or @data.homepage
+		url = @data.homepage or grunt.config.get('pkg.homepage')
 
 		# Check homepage is set
 		homeErrMess = 'Requires "homepage" parameter. Sitemap was not created.'

@@ -7,7 +7,7 @@
     fs = require('fs');
     return grunt.registerMultiTask('sitemap', 'sitemap description', function() {
       var changefreq, file, files, homeErrMess, pattern, priority, root, rootWarnMess, sitemapPath, url, xmlStr, _i, _len;
-      url = grunt.config.get('pkg.homepage') || this.data.homepage;
+      url = this.data.homepage || grunt.config.get('pkg.homepage');
       homeErrMess = 'Requires "homepage" parameter. Sitemap was not created.';
       if (!url) {
         grunt.fail.warn(homeErrMess, 3);
@@ -26,7 +26,7 @@
       files = grunt.file.expand(pattern);
       files = grunt.utils._.map(files, function(file) {
         var fileStat, mtime, rawUrlPath, urlPath;
-        if (file.match(/404\.html/i)) {
+        if (file.match(/404\.html$/i)) {
           return false;
         }
         fileStat = {};
