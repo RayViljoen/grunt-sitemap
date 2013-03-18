@@ -24,7 +24,7 @@
       priority = (this.data.priority || 0.5).toString();
       pattern = path.join(root, this.data.pattern || '/**/*.html');
       files = grunt.file.expand(pattern);
-      files = grunt.utils._.map(files, function(file) {
+      files = grunt.util._.map(files, function(file) {
         var fileStat, mtime, rawUrlPath, urlPath;
         if (file.match(/404\.html$/i)) {
           return false;
@@ -37,7 +37,7 @@
         fileStat.mtime = new Date(mtime).toISOString();
         return fileStat;
       });
-      files = grunt.utils._.compact(files);
+      files = grunt.util._.compact(files);
       xmlStr = '<?xml version="1.0" encoding="UTF-8"?>\n';
       xmlStr += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
       for (_i = 0, _len = files.length; _i < _len; _i++) {
