@@ -50,7 +50,7 @@ module.exports = (grunt) ->
 		files = grunt.file.expand pattern
 
 		# Remove root from path and prepend homepage url
-		files = grunt.utils._.map files, (file) ->
+		files = grunt.util._.map files, (file) ->
 
 			# Do not include 404 page
 			return no if file.match /404\.html$/i
@@ -77,7 +77,7 @@ module.exports = (grunt) ->
 			fileStat
 
 		# Remove any falsy values (404.html returns false)
-		files = grunt.utils._.compact files
+		files = grunt.util._.compact files
 
 		# -----------------------
 		# 		Build xml
