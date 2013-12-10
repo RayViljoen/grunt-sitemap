@@ -9,6 +9,7 @@ module.exports = (grunt) ->
 	# Node modules
 	path = require 'path'
 	fs = require 'fs'
+	_ = require 'lodash'
 
 	# Please see the grunt documentation for more information regarding task and
 	# helper creation: https://github.com/cowboy/grunt/blob/master/docs/toc.md
@@ -50,7 +51,7 @@ module.exports = (grunt) ->
 		files = grunt.file.expand pattern
 
 		# Remove root from path and prepend homepage url
-		files = grunt.util._.map files, (file) ->
+		files = _.map files, (file) ->
 
 			# Do not include 404 page
 			return no if file.match /404\.html$/i
@@ -77,7 +78,7 @@ module.exports = (grunt) ->
 			fileStat
 
 		# Remove any falsy values (404.html returns false)
-		files = grunt.util._.compact files
+		files = _.compact files
 
 		# -----------------------
 		# 		Build xml
