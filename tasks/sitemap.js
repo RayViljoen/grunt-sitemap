@@ -44,7 +44,9 @@
       });
       files = _.compact(files);
       xmlStr = '<?xml version="1.0" encoding="UTF-8"?>\n';
-      xmlStr += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+      xmlStr += '<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"';
+      xmlStr += ' xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"\n';
+      xmlStr += '	xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
       for (_i = 0, _len = files.length; _i < _len; _i++) {
         file = files[_i];
         xmlStr += '<url>\n';
