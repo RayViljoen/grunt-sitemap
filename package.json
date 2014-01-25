@@ -31,7 +31,10 @@
     "build": "cake build"
   },
   "devDependencies": {
-    "grunt": "~0.3.17"
+
+  },
+	"peerDependencies": {
+    "grunt": "~0.4.2"
   },
   "keywords": [
     "gruntplugin",
