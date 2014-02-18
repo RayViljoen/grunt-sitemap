@@ -45,7 +45,7 @@ module.exports = (grunt) ->
 		priority = (@data.priority or 0.5).toString()
 
 		# File pattern
-		pattern = path.join root, (@data.pattern or '/**/*.html')
+		pattern = this.data.pattern or path.join root, '/**/*.html'
 		
 		# Glob root
 		files = grunt.file.expand pattern
