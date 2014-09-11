@@ -15,30 +15,32 @@
   "bugs": {
     "url": "https://github.com/RayViljoen/grunt-sitemap/issues"
   },
-  "licenses": [
+  "license": [
     {
       "type": "MIT",
       "url": "https://github.com/RayViljoen/grunt-sitemap/blob/master/LICENSE-MIT"
     }
   ],
-  "main": "grunt.js",
-  "bin": "bin/grunt-sitemap",
-  "engines": {
-    "node": "*"
-  },
-  "scripts": {
-    "watch": "cake watch",
-    "build": "cake build"
-  },
-  "devDependencies": {
-    "grunt": "~0.3.17"
-  },
   "keywords": [
     "gruntplugin",
     "sitemap",
     "seo"
   ],
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "scripts": {
+    "build": "cake build",
+    "watch": "cake watch"
+  },
   "dependencies": {
     "lodash": "~2.4.1"
-  }
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5"
+  },
+  "files": [
+    "LICENSE-MIT",
+    "tasks"
+  ]
 }
