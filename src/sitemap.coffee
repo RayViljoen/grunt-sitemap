@@ -9,6 +9,7 @@ module.exports = (grunt) ->
 	path = require 'path'
 	fs = require 'fs'
 	_ = require 'lodash'
+	slash = require 'slash'
 
 	# Please see the grunt documentation for more information regarding task and
 	# helper creation: https://github.com/cowboy/grunt/blob/master/docs/toc.md
@@ -27,15 +28,18 @@ module.exports = (grunt) ->
 		homeErrMess = 'Requires "homepage" parameter. Sitemap was not created.'
 		grunt.fail.fatal(homeErrMess, 3) unless url
 
-		# Add trailing slash to url if not there
-		url += '/' unless url[-1..] is '/'
-
 		# Site root dir
-		root = path.normalize (@data.siteRoot or '.')
+		root = path.normalize(@data.siteRoot or '.')
+
+		# Convert the paths to Unix path
+		root = slash(root)
 
 		# Check a site root was set
 		rootWarnMess = 'No "siteRoot" parameter defined. Using current directory.'
 		grunt.log.subhead rootWarnMess if root is '.'
+
+		# Add trailing slash to url if not there
+		if url[-1..] isnt '/' and root.slice(-1) isnt '/' then url += '/'
 
 		# changereq setting
 		changefreq = @data.changefreq or 'daily'
@@ -64,6 +68,10 @@ module.exports = (grunt) ->
 			  rawUrlPath = file
 			else
 			  rawUrlPath = file.replace root, ''
+
+			# If the rawUrlPath has a slash in the beginning, remove it
+			# since we add it in url
+			if rawUrlPath.indexOf('/') is 0 then rawUrlPath = rawUrlPath.replace '/', ''
 
 			# Remove index.html
 			urlPath = rawUrlPath.replace /(index)\.[A-z]+$/, '', 'i'
