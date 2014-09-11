@@ -21,7 +21,8 @@ module.exports = (grunt) ->
 	grunt.registerMultiTask 'sitemap', 'sitemap description', ->
 		
 		# Homepage from pkg
-		url = @data.homepage or grunt.config.get('pkg.homepage')
+		pkg = grunt.file.readJSON('package.json');
+		url = @data.homepage or pkg.homepage
 
 		# Check homepage is set
 		homeErrMess = 'Requires "homepage" parameter. Sitemap was not created.'
