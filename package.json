@@ -31,7 +31,7 @@
     "build": "cake build"
   },
   "devDependencies": {
-    "grunt": "~0.4.2"
+    "grunt": "~0.3.17"
   },
   "keywords": [
     "gruntplugin",
