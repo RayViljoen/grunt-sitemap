@@ -30,7 +30,11 @@
           return false;
         }
         fileStat = {};
-        rawUrlPath = file.replace(root, '');
+        if (root === '.') {
+          rawUrlPath = file;
+        } else {
+          rawUrlPath = file.replace(root, '');
+        }
         urlPath = rawUrlPath.replace(/(index)\.[A-z]+$/, '', 'i');
         fileStat.url = url + urlPath;
         mtime = (fs.statSync(file).mtime).getTime();
