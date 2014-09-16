@@ -31,8 +31,8 @@ module.exports = (grunt) ->
 		# Site root dir
 		root = path.normalize(@data.siteRoot or '.')
 
-		# Convert the paths to Unix path
-		root = slash(root)
+		# Convert the paths to Unix paths
+		root = slash(root) unless slash(root) is './'
 
 		# Check a site root was set
 		rootWarnMess = 'No "siteRoot" parameter defined. Using current directory.'

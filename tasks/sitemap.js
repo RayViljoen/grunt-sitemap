@@ -15,7 +15,9 @@
         grunt.fail.fatal(homeErrMess, 3);
       }
       root = path.normalize(this.data.siteRoot || '.');
-      root = slash(root);
+      if (slash(root) !== './') {
+        root = slash(root);
+      }
       rootWarnMess = 'No "siteRoot" parameter defined. Using current directory.';
       if (root === '.') {
         grunt.log.subhead(rootWarnMess);
