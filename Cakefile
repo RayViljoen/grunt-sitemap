@@ -2,9 +2,10 @@ fs = require 'fs'
 
 {print} = require 'sys'
 {spawn} = require 'child_process'
+cmd = if process.platform in ['win32'] then 'coffee.cmd' else 'coffee'
 
 build = (callback) ->
-  coffee = spawn 'coffee', ['-c', '-o', 'tasks', 'src']
+  coffee = spawn cmd, ['-c', '-o', 'tasks', 'src']
   coffee.stderr.on 'data', (data) ->
     process.stderr.write data.toString()
   coffee.stdout.on 'data', (data) ->
@@ -15,9 +16,9 @@ build = (callback) ->
 task 'build', 'Build tasks/ from src/', ->
   build()
 
- task 'watch', 'Watch src/ for changes', ->
-    coffee = spawn 'coffee', ['-w', '-c', '-o', 'tasks', 'src']
-    coffee.stderr.on 'data', (data) ->
-      process.stderr.write data.toString()
-    coffee.stdout.on 'data', (data) ->
-      print data.toString()
+task 'watch', 'Watch src/ for changes', ->
+  coffee = spawn cmd, ['-w', '-c', '-o', 'tasks', 'src']
+  coffee.stderr.on 'data', (data) ->
+    process.stderr.write data.toString()
+  coffee.stdout.on 'data', (data) ->
+    print data.toString()
