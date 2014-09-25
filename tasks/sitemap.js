@@ -11,7 +11,7 @@
       url = this.data.homepage || pkg.homepage;
       homeErrMess = 'Requires "homepage" parameter. Sitemap was not created.';
       if (!url) {
-        grunt.fail.warn(homeErrMess, 3);
+        grunt.fail.fatal(homeErrMess, 3);
       }
       if (url.slice(-1) !== '/') {
         url += '/';
@@ -57,8 +57,7 @@
       xmlStr += '</urlset>';
       sitemapPath = path.join(root, 'sitemap.xml');
       grunt.file.write(sitemapPath, xmlStr);
-      grunt.log.writeln('Sitemap created successfully');
-      grunt.log.writeln('OK');
+      grunt.log.ok('Sitemap created successfully');
       if (grunt.task.current.errorCount) {
         return false;
       } else {

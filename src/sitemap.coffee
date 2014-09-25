@@ -25,7 +25,7 @@ module.exports = (grunt) ->
 
 		# Check homepage is set
 		homeErrMess = 'Requires "homepage" parameter. Sitemap was not created.'
-		grunt.fail.warn(homeErrMess, 3) unless url
+		grunt.fail.fatal(homeErrMess, 3) unless url
 
 		# Add trailing slash to url if not there
 		url += '/' unless url[-1..] is '/'
@@ -106,8 +106,7 @@ module.exports = (grunt) ->
 		sitemapPath = path.join root, 'sitemap.xml'
 		grunt.file.write sitemapPath, xmlStr
 
-		grunt.log.writeln 'Sitemap created successfully'
-		grunt.log.writeln 'OK'
+		grunt.log.ok 'Sitemap created successfully'
 
 		# Return true / false
 		if grunt.task.current.errorCount then no else yes
