@@ -1,4 +1,3 @@
-
 # grunt-sitemap
 # https://github.com/RayViljoen/grunt-sitemap
 # Copyright (c) 2013 Ray Viljoen
@@ -19,7 +18,7 @@ module.exports = (grunt) ->
 	# ==========================================================================
 
 	grunt.registerMultiTask 'sitemap', 'sitemap description', ->
-		
+
 		# Homepage from pkg
 		url = @data.homepage or grunt.config.get('pkg.homepage')
 
@@ -46,7 +45,7 @@ module.exports = (grunt) ->
 
 		# File pattern
 		pattern = this.data.pattern or path.join root, '/**/*.html'
-		
+
 		# Glob root
 		files = grunt.file.expand pattern
 
@@ -60,7 +59,10 @@ module.exports = (grunt) ->
 			fileStat = {}
 
 			# Get path relative to root, but still containing index paths
-			rawUrlPath = file.replace root, ''
+			if root is '.'
+			  rawUrlPath = file
+			else
+			  rawUrlPath = file.replace root, ''
 
 			# Remove index.html
 			urlPath = rawUrlPath.replace /(index)\.[A-z]+$/, '', 'i'
@@ -83,7 +85,7 @@ module.exports = (grunt) ->
 		# -----------------------
 		# 		Build xml
 		# -----------------------
-		
+
 		xmlStr  = '<?xml version="1.0" encoding="UTF-8"?>\n'
 		xmlStr += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
 
@@ -108,4 +110,3 @@ module.exports = (grunt) ->
 
 		# Return true / false
 		if grunt.task.current.errorCount then no else yes
-
