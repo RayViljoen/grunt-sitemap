@@ -6,24 +6,32 @@
 [![Dependency Status](https://david-dm.org/RayViljoen/grunt-sitemap.svg)](https://david-dm.org/RayViljoen/grunt-sitemap)
 [![devDependency Status](https://david-dm.org/RayViljoen/grunt-sitemap/dev-status.svg)](https://david-dm.org/RayViljoen/grunt-sitemap#info=devDependencies)
 
+
 ## Installation
 
-Install npm package, next to your project's `grunt.js` file:
+This plugin requires Grunt `~0.4.5`.
 
-```
-npm install grunt-sitemap
+If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out
+the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains
+how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as
+install and use Grunt plugins. Once you're familiar with that process, you may
+install this plugin with this command:
+
+```sh
+npm install grunt-bootlint --save-dev
 ```
 
-Add this line to your project's `grunt.js`:
+Once the plugin has been installed, it may be enabled inside your Gruntfile with
+this line of JavaScript:
 
+```js
+grunt.loadNpmTasks('grunt-bootlint');
 ```
-grunt.loadNpmTasks('grunt-sitemap');
-```
+
 
 ## Configuration
 
 `sitemap` is a multitask, so you can use it similarly to `lint`, `watch` etc...
-
 
 ```js
 grunt.initConfig({
@@ -37,29 +45,43 @@ grunt.initConfig({
 });
 ```
 
+
 ### Options
 
+#### siteRoot
 
-* **siteRoot**: `String` *(`./` by default)*
+* Type: `string`
+* Default: `./`
 
-    Site (public root) directory relative to your grunt.js file.
-    This is where indexing will begin and your sitemap be saved to.
+Site (public root) directory relative to your Gruntfile.js file.
+This is where indexing will begin and your sitemap be saved to.
 
-* **pattern**: `String` *(`/**/*.html` by default)*
+#### pattern
 
-    Pattern to match website files. Defaults to any (deep) `.html` files.
-    Excludes `404.html` by default and converts `index.html` to directory path `/`.
-    See [minimatch](https://github.com/isaacs/minimatch) for more on pattern matching.
+* Type: `string`
+* Default: `/**/*.html`
 
-* **homepage**: `String` *(pulled from package.json by default)*
+Pattern to match website files. Excludes `404.html` by default and converts `index.html` to directory path `/`.
+See [minimatch](https://github.com/isaacs/minimatch) for more on pattern matching.
 
-    Site URL including protocol: e.g. `http://www.example.com`
-    If the `homepage` field is specified in your package.json it will be used from there.
+#### homepage
 
-* **changefreq**: `String` *(`daily` by default)*
+* Type: `string`
+* Default: `read from package.json`
 
-    Set this to override `<changefreq>` in the site map. Defaults to `daily`.
+Site URL including protocol: e.g. `http://www.example.com`
+If the `homepage` field is specified in your package.json, it will be used from there.
 
-* **priority**: `String` *(`0.5` by default)*
+#### changefreq
 
-    Set this to override `<priority>` in the site map. Defaults to `0.5`.
+* Type: `string`
+* Default: `daily`
+
+Set this to override `<changefreq>` in sitemap.
+
+#### priority
+
+* Type: `string`
+* Default: `0.5`
+
+Set this to override `<priority>` in sitemap.
