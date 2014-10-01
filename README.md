@@ -1,7 +1,10 @@
 # grunt-sitemap
 
-**Grunt plugin for generating sitemaps.**
+> A Grunt plugin for generating sitemaps
 
+[![NPM version](https://badge.fury.io/js/grunt-sitemap.svg)](http://badge.fury.io/js/grunt-sitemap)
+[![Dependency Status](https://david-dm.org/RayViljoen/grunt-sitemap.svg)](https://david-dm.org/RayViljoen/grunt-sitemap)
+[![devDependency Status](https://david-dm.org/RayViljoen/grunt-sitemap/dev-status.svg)](https://david-dm.org/RayViljoen/grunt-sitemap#info=devDependencies)
 
 ## Installation
 
