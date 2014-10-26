@@ -18,14 +18,14 @@ install and use Grunt plugins. Once you're familiar with that process, you may
 install this plugin with this command:
 
 ```sh
-npm install grunt-bootlint --save-dev
+npm install grunt-sitemap --save-dev
 ```
 
 Once the plugin has been installed, it may be enabled inside your Gruntfile with
 this line of JavaScript:
 
 ```js
-grunt.loadNpmTasks('grunt-bootlint');
+grunt.loadNpmTasks('grunt-sitemap');
 ```
 
 
