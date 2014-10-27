@@ -85,3 +85,6 @@ Set this to override `<changefreq>` in sitemap.
 * Default: `0.5`
 
 Set this to override `<priority>` in sitemap.
+
+## Contributing
+We accept pull requests! A special thanks to XhmikosR for keeping things rolling.
