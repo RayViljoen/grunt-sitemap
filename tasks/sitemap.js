@@ -7,7 +7,7 @@
     _ = require('lodash');
     slash = require('slash');
     return grunt.registerMultiTask('sitemap', 'sitemap description', function() {
-      var changefreq, file, files, homeErrMess, pattern, pkg, priority, root, rootWarnMess, sitemapPath, url, xmlStr, _i, _len;
+      var changefreq, extension, file, files, homeErrMess, pattern, pkg, priority, root, rootWarnMess, sitemapPath, url, xmlStr, _i, _len;
       pkg = grunt.file.readJSON('package.json');
       url = this.data.homepage || pkg.homepage;
       homeErrMess = 'Requires "homepage" parameter. Sitemap was not created.';
@@ -26,6 +26,7 @@
         url += '/';
       }
       changefreq = this.data.changefreq || 'daily';
+      extension = this.data.extension != null ? this.data.extension : true;
       priority = (this.data.priority || 0.5).toString();
       pattern = this.data.pattern || path.join(root, '/**/*.html');
       files = grunt.file.expand(pattern);
@@ -43,7 +44,7 @@
         if (rawUrlPath.indexOf('/') === 0) {
           rawUrlPath = rawUrlPath.replace('/', '');
         }
-        urlPath = rawUrlPath.replace(/(index)\.[A-z]+$/, '', 'i');
+        urlPath = extension ? rawUrlPath.replace(/(index)\.[A-z]+$/, '', 'i').replace(/\.html/, '/', 'i') : rawUrlPath.replace(/(index)\.[A-z]+$/, '', 'i');
         fileStat.url = url + urlPath;
         mtime = (fs.statSync(file).mtime).getTime();
         fileStat.mtime = new Date(mtime).toISOString();

@@ -86,5 +86,14 @@ Set this to override `<changefreq>` in sitemap.
 
 Set this to override `<priority>` in sitemap.
 
+#### extension
+
+* Type: `bollean`
+* Default: `true`
+
+By default the `<loc>` is generated with a path that contains extension.
+Eg: '.hmlt' or '.htm'.
+To make your path without extension just add `false` for this **extension** attribute.
+
 ## Contributing
 We accept pull requests! A special thanks to XhmikosR for keeping things rolling.
