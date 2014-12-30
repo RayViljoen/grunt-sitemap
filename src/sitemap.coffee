@@ -76,13 +76,13 @@ module.exports = (grunt) ->
 			if rawUrlPath.indexOf('/') is 0 then rawUrlPath = rawUrlPath.replace '/', ''
 
 			urlPath = if extension
+				# Remove index.html
+				rawUrlPath.replace /(index)\.[A-z]+$/, '', 'i'
+			else
 				# Remove extension
 				rawUrlPath
 					.replace /(index)\.[A-z]+$/, '', 'i'
 					.replace /\.html/, '/', 'i'
-			else
-				# Remove index.html
-				rawUrlPath.replace /(index)\.[A-z]+$/, '', 'i'
 
 			# Join path with homepage url
 			fileStat.url = url + urlPath

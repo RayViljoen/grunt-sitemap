@@ -44,7 +44,7 @@
         if (rawUrlPath.indexOf('/') === 0) {
           rawUrlPath = rawUrlPath.replace('/', '');
         }
-        urlPath = extension ? rawUrlPath.replace(/(index)\.[A-z]+$/, '', 'i').replace(/\.html/, '/', 'i') : rawUrlPath.replace(/(index)\.[A-z]+$/, '', 'i');
+        urlPath = extension ? rawUrlPath.replace(/(index)\.[A-z]+$/, '', 'i') : rawUrlPath.replace(/(index)\.[A-z]+$/, '', 'i').replace(/\.html/, '/', 'i');
         fileStat.url = url + urlPath;
         mtime = (fs.statSync(file).mtime).getTime();
         fileStat.mtime = new Date(mtime).toISOString();
