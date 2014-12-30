@@ -88,7 +88,7 @@ Set this to override `<priority>` in sitemap.
 
 #### extension
 
-* Type: `bollean`
+* Type: `boolean`
 * Default: `true`
 
 By default the `<loc>` is generated with a path that contains extension.
