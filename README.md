@@ -86,7 +86,7 @@ Set this to override `<changefreq>` in sitemap.
 
 Set this to override `<priority>` in sitemap.
 
-#### extension without trailing slash
+#### extension
 
 * Type: `object`
 * Default: `{ required: true }`
@@ -99,9 +99,7 @@ extension: {
 }
 ````
 
-and if you need to have the bar at the end of the url simply add the attribute `trailingSlash: true`
-
-Eg.
+and if you need to trailing slash simply add the attribute `trailingSlash: true` Eg.
 
 ````javascript
 extension: {
