@@ -26,7 +26,9 @@
         url += '/';
       }
       changefreq = this.data.changefreq || 'daily';
-      extension = this.data.extension != null ? this.data.extension : true;
+      extension = this.data.extension != null ? this.data.extension : {
+        required: true
+      };
       priority = (this.data.priority || 0.5).toString();
       pattern = this.data.pattern || path.join(root, '/**/*.html');
       files = grunt.file.expand(pattern);
@@ -44,7 +46,15 @@
         if (rawUrlPath.indexOf('/') === 0) {
           rawUrlPath = rawUrlPath.replace('/', '');
         }
-        urlPath = extension ? rawUrlPath.replace(/(index)\.[A-z]+$/, '', 'i') : rawUrlPath.replace(/(index)\.[A-z]+$/, '', 'i').replace(/\.html/, '/', 'i');
+        rawUrlPath.replace(/(index)\.[A-z]+$/, '', 'i');
+        urlPath = (function() {
+          switch (false) {
+            case !(typeof extension === 'object' && !extension.required && extension.trailingSlash):
+              return rawUrlPath.replace(/\.html/, '/', 'i');
+            case !(typeof extension === 'object' && !extension.required && !extension.trailingSlash):
+              return rawUrlPath.replace(/\.html/, '', 'i');
+          }
+        })();
         fileStat.url = url + urlPath;
         mtime = (fs.statSync(file).mtime).getTime();
         fileStat.mtime = new Date(mtime).toISOString();

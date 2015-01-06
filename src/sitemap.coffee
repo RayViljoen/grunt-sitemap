@@ -44,7 +44,7 @@ module.exports = (grunt) ->
 		changefreq = @data.changefreq or 'daily'
 
 		# extension setting
-		extension = if @data.extension? then @data.extension else true
+		extension = if @data.extension? then @data.extension else { required: true }
 
 		# priority setting
 		# Must be string
@@ -75,14 +75,16 @@ module.exports = (grunt) ->
 			# since we add it in url
 			if rawUrlPath.indexOf('/') is 0 then rawUrlPath = rawUrlPath.replace '/', ''
 
-			urlPath = if extension
-				# Remove index.html
-				rawUrlPath.replace /(index)\.[A-z]+$/, '', 'i'
-			else
-				# Remove extension
-				rawUrlPath
-					.replace /(index)\.[A-z]+$/, '', 'i'
-					.replace /\.html/, '/', 'i'
+			# Remove index.html
+			rawUrlPath.replace /(index)\.[A-z]+$/, '', 'i'
+
+			urlPath = switch
+			    when typeof(extension) == 'object' && !extension.required && extension.trailingSlash
+			    	# Remove extension with trailing slash
+			    	rawUrlPath.replace /\.html/, '/', 'i'
+			    when typeof(extension) == 'object' && !extension.required && !extension.trailingSlash
+			    	# Remove extension without trailing slash
+			    	rawUrlPath.replace /\.html/, '', 'i'
 
 			# Join path with homepage url
 			fileStat.url = url + urlPath
