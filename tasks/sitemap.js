@@ -46,13 +46,15 @@
         if (rawUrlPath.indexOf('/') === 0) {
           rawUrlPath = rawUrlPath.replace('/', '');
         }
-        rawUrlPath.replace(/(index)\.[A-z]+$/, '', 'i');
+        rawUrlPath = rawUrlPath.replace(/(index)\.[A-z]+$/, '', 'i');
         urlPath = (function() {
           switch (false) {
             case !(typeof extension === 'object' && !extension.required && extension.trailingSlash):
               return rawUrlPath.replace(/\.html/, '/', 'i');
             case !(typeof extension === 'object' && !extension.required && !extension.trailingSlash):
               return rawUrlPath.replace(/\.html/, '', 'i');
+            default:
+              return rawUrlPath;
           }
         })();
         fileStat.url = url + urlPath;

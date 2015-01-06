@@ -76,7 +76,7 @@ module.exports = (grunt) ->
 			if rawUrlPath.indexOf('/') is 0 then rawUrlPath = rawUrlPath.replace '/', ''
 
 			# Remove index.html
-			rawUrlPath.replace /(index)\.[A-z]+$/, '', 'i'
+			rawUrlPath = rawUrlPath.replace /(index)\.[A-z]+$/, '', 'i'
 
 			urlPath = switch
 			    when typeof(extension) == 'object' && !extension.required && extension.trailingSlash
@@ -85,6 +85,9 @@ module.exports = (grunt) ->
 			    when typeof(extension) == 'object' && !extension.required && !extension.trailingSlash
 			    	# Remove extension without trailing slash
 			    	rawUrlPath.replace /\.html/, '', 'i'
+			    else
+			    	# only return path with extension
+			    	rawUrlPath
 
 			# Join path with homepage url
 			fileStat.url = url + urlPath
