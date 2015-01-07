@@ -94,13 +94,13 @@ Set this to override `<priority>` in sitemap.
 
 Eg.
 
-````javascript
+````js
 extension: {
   required: false
 }
 ````
 
-and if you need to trailing slash simply add the attribute `trailingSlash: true` Eg.
+and if you need a trailing slash simply add the attribute `trailingSlash: true` Eg.
 
 ````javascript
 extension: {
@@ -109,9 +109,8 @@ extension: {
 }
 ````
 
-By default the `<loc>` is generated with a path that contains extension.
-Eg: '.hmlt' or '.htm'.
-To make your path without extension just add `extension: { required: false }` for this **required** of extension attribute.
+By default the `<loc>` is generated with a path that contains extension. Eg: '.html' or '.htm'.
+If you don't want extensions to be included in your sitemap, just add `extension: { required: false }`. This will give you clean URL endings.
 
 ## Contributing
 We accept pull requests! A special thanks to XhmikosR for keeping things rolling.
