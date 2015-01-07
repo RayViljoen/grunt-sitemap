@@ -38,6 +38,7 @@ grunt.initConfig({
 
     sitemap: {
         dist: {
+            pattern: ['**/*.html', '!**/google*.html'], // this will exclude 'google*.html'
             siteRoot: 'public/'
         }
     }
