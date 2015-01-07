@@ -7,20 +7,19 @@
     _ = require('lodash');
     slash = require('slash');
     return grunt.registerMultiTask('sitemap', 'sitemap description', function() {
-      var changefreq, file, files, homeErrMess, pattern, pkg, priority, root, rootWarnMess, sitemapPath, url, xmlStr, _i, _len;
+      var changefreq, file, files, pattern, pkg, priority, root, sitemapPath, tempRoot, url, xmlStr, _i, _len;
       pkg = grunt.file.readJSON('package.json');
       url = this.data.homepage || pkg.homepage;
-      homeErrMess = 'Requires "homepage" parameter. Sitemap was not created.';
       if (!url) {
-        grunt.fail.fatal(homeErrMess, 3);
+        grunt.fail.warn('Requires "homepage" parameter. Sitemap was not created.', 3);
       }
       root = path.normalize(this.data.siteRoot || '.');
-      if (slash(root) !== './') {
-        root = slash(root);
+      tempRoot = slash(root);
+      if (tempRoot !== './') {
+        root = tempRoot;
       }
-      rootWarnMess = 'No "siteRoot" parameter defined. Using current directory.';
       if (root === '.') {
-        grunt.log.subhead(rootWarnMess);
+        grunt.log.subhead('No "siteRoot" parameter defined. Using current directory.');
       }
       if (url.slice(-1) !== '/' && root.slice(-1) !== '/') {
         url += '/';
@@ -52,16 +51,16 @@
       files = _.compact(files);
       xmlStr = '<?xml version="1.0" encoding="UTF-8"?>\n';
       xmlStr += '<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"';
-      xmlStr += ' xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"\n';
-      xmlStr += '	xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+      xmlStr += ' xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"';
+      xmlStr += ' xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
       for (_i = 0, _len = files.length; _i < _len; _i++) {
         file = files[_i];
-        xmlStr += '<url>\n';
-        xmlStr += "  <loc>" + file.url + "</loc>\n";
-        xmlStr += "  <lastmod>" + file.mtime + "</lastmod>\n";
-        xmlStr += "  <changefreq>" + changefreq + "</changefreq>\n";
-        xmlStr += "  <priority>" + priority + "</priority>\n";
-        xmlStr += "</url>\n";
+        xmlStr += '  <url>\n';
+        xmlStr += "    <loc>" + file.url + "</loc>\n";
+        xmlStr += "    <lastmod>" + file.mtime + "</lastmod>\n";
+        xmlStr += "    <changefreq>" + changefreq + "</changefreq>\n";
+        xmlStr += "    <priority>" + priority + "</priority>\n";
+        xmlStr += "  </url>\n";
       }
       xmlStr += '</urlset>';
       sitemapPath = path.join(root, 'sitemap.xml');

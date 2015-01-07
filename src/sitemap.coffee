@@ -20,23 +20,22 @@ module.exports = (grunt) ->
 
 	grunt.registerMultiTask 'sitemap', 'sitemap description', ->
 
-		# Homepage from pkg
-		pkg = grunt.file.readJSON('package.json');
+		# Read `homepage` from package.json
+		pkg = grunt.file.readJSON('package.json')
 		url = @data.homepage or pkg.homepage
 
-		# Check homepage is set
-		homeErrMess = 'Requires "homepage" parameter. Sitemap was not created.'
-		grunt.fail.fatal(homeErrMess, 3) unless url
+		# Check if `homepage` property is set
+		grunt.fail.warn('Requires "homepage" parameter. Sitemap was not created.', 3) unless url
 
 		# Site root dir
 		root = path.normalize(@data.siteRoot or '.')
 
 		# Convert the paths to Unix paths
-		root = slash(root) unless slash(root) is './'
+		tempRoot = slash(root)
+		root = tempRoot unless tempRoot is './'
 
-		# Check a site root was set
-		rootWarnMess = 'No "siteRoot" parameter defined. Using current directory.'
-		grunt.log.subhead rootWarnMess if root is '.'
+		# Check a `siteRoot` was set
+		grunt.log.subhead 'No "siteRoot" parameter defined. Using current directory.' if root is '.'
 
 		# Add trailing slash to url if not there
 		if url[-1..] isnt '/' and root.slice(-1) isnt '/' then url += '/'
@@ -97,17 +96,17 @@ module.exports = (grunt) ->
 
 		xmlStr  = '<?xml version="1.0" encoding="UTF-8"?>\n'
 		xmlStr += '<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"'
-		xmlStr += ' xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"\n'
-		xmlStr += '	xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+		xmlStr += ' xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"'
+		xmlStr += ' xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
 
 		# Create url nodes
 		for file in files
-			xmlStr += '<url>\n'
-			xmlStr += "  <loc>#{file.url}</loc>\n"
-			xmlStr += "  <lastmod>#{file.mtime}</lastmod>\n"
-			xmlStr += "  <changefreq>#{changefreq}</changefreq>\n"
-			xmlStr += "  <priority>#{priority}</priority>\n"
-			xmlStr += "</url>\n"
+			xmlStr += '  <url>\n'
+			xmlStr += "    <loc>#{file.url}</loc>\n"
+			xmlStr += "    <lastmod>#{file.mtime}</lastmod>\n"
+			xmlStr += "    <changefreq>#{changefreq}</changefreq>\n"
+			xmlStr += "    <priority>#{priority}</priority>\n"
+			xmlStr += "  </url>\n"
 
 		# Close xml
 		xmlStr += '</urlset>'
