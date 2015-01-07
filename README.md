@@ -87,5 +87,31 @@ Set this to override `<changefreq>` in sitemap.
 
 Set this to override `<priority>` in sitemap.
 
+#### extension
+
+* Type: `object`
+* Default: `{ required: true }`
+
+Eg.
+
+````javascript
+extension: {
+  required: false
+}
+````
+
+and if you need to trailing slash simply add the attribute `trailingSlash: true` Eg.
+
+````javascript
+extension: {
+  required: false
+  trailingSlash: true
+}
+````
+
+By default the `<loc>` is generated with a path that contains extension.
+Eg: '.hmlt' or '.htm'.
+To make your path without extension just add `extension: { required: false }` for this **required** of extension attribute.
+
 ## Contributing
 We accept pull requests! A special thanks to XhmikosR for keeping things rolling.

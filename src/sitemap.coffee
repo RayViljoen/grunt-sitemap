@@ -4,7 +4,6 @@
 # Licensed under the MIT license.
 
 module.exports = (grunt) ->
-
 	# Node modules
 	path = require 'path'
 	fs = require 'fs'
@@ -43,6 +42,9 @@ module.exports = (grunt) ->
 		# changereq setting
 		changefreq = @data.changefreq or 'daily'
 
+		# extension setting
+		extension = if @data.extension? then @data.extension else { required: true }
+
 		# priority setting
 		# Must be string
 		priority = (@data.priority or 0.5).toString()
@@ -73,7 +75,18 @@ module.exports = (grunt) ->
 			if rawUrlPath.indexOf('/') is 0 then rawUrlPath = rawUrlPath.replace '/', ''
 
 			# Remove index.html
-			urlPath = rawUrlPath.replace /(index)\.[A-z]+$/, '', 'i'
+			rawUrlPath = rawUrlPath.replace /(index)\.[A-z]+$/, '', 'i'
+
+			urlPath = switch
+			    when typeof(extension) == 'object' && !extension.required && extension.trailingSlash
+			    	# Remove extension with trailing slash
+			    	rawUrlPath.replace /\.html/, '/', 'i'
+			    when typeof(extension) == 'object' && !extension.required && !extension.trailingSlash
+			    	# Remove extension without trailing slash
+			    	rawUrlPath.replace /\.html/, '', 'i'
+			    else
+			    	# only return path with extension
+			    	rawUrlPath
 
 			# Join path with homepage url
 			fileStat.url = url + urlPath

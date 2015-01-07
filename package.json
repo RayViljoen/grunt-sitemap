@@ -1,7 +1,7 @@
 {
   "name": "grunt-sitemap",
   "description": "Grunt sitemap generator plugin",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "homepage": "https://github.com/RayViljoen/grunt-sitemap",
   "author": {
     "name": "Ray Viljoen",
