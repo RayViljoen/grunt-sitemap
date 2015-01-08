@@ -100,17 +100,16 @@ extension: {
 }
 ````
 
-and if you need a trailing slash simply add the attribute `trailingSlash: true` Eg.
+If you need a trailing slash just set the attribute `trailingSlash: true` Eg.
 
-````javascript
+````js
 extension: {
   required: false
   trailingSlash: true
 }
 ````
 
-By default the `<loc>` is generated with a path that contains extension. Eg: '.html' or '.htm'.
-If you don't want extensions to be included in your sitemap, just add `extension: { required: false }`. This will give you clean URL endings.
+By default the <loc> tag is generated for paths that contains file extensions. Eg: '.html' or '.htm'. If you don't want url's with file extensions to be included in your sitemap, just add the attribute `extension: { required: false }`. This will output URL's without file extensions.
 
 ## Contributing
 We accept pull requests! A special thanks to XhmikosR for keeping things rolling.
