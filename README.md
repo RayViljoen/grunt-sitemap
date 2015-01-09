@@ -104,7 +104,7 @@ If you need a trailing slash just set the attribute `trailingSlash: true` Eg.
 
 ````js
 extension: {
-  required: false
+  required: false,
   trailingSlash: true
 }
 ````
