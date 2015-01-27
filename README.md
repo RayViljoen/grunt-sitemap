@@ -116,4 +116,5 @@ This will output URL's without file extensions.
 
 
 ## Contributing
+
 We accept pull requests! A special thanks to XhmikosR for keeping things rolling.
