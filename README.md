@@ -36,12 +36,12 @@ grunt.loadNpmTasks('grunt-sitemap');
 ```js
 grunt.initConfig({
 
-    sitemap: {
-        dist: {
-            pattern: ['**/*.html', '!**/google*.html'], // this will exclude 'google*.html'
-            siteRoot: 'public/'
-        }
+  sitemap: {
+    dist: {
+      pattern: ['**/*.html', '!**/google*.html'], // this will exclude 'google*.html'
+      siteRoot: 'public/'
     }
+  }
 
 });
 ```
@@ -92,24 +92,29 @@ Set this to override `<priority>` in sitemap.
 * Type: `object`
 * Default: `{ required: true }`
 
-Eg.
+E.g.
 
-````js
+```js
 extension: {
   required: false
 }
-````
+```
 
-If you need a trailing slash just set the attribute `trailingSlash: true` Eg.
+If you need a trailing slash just set the attribute `trailingSlash: true`. E.g.
 
-````js
+```js
 extension: {
   required: false
   trailingSlash: true
 }
-````
+```
 
-By default the <loc> tag is generated for paths that contains file extensions. Eg: '.html' or '.htm'. If you don't want url's with file extensions to be included in your sitemap, just add the attribute `extension: { required: false }`. This will output URL's without file extensions.
+By default the <loc> tag is generated for paths that contains file extensions.
+E.g.: '.html' or '.htm'. If you don't want URL's with file extensions to be included
+in your sitemap, just add the attribute `extension: { required: false }`.
+This will output URL's without file extensions.
+
 
 ## Contributing
+
 We accept pull requests! A special thanks to XhmikosR for keeping things rolling.
