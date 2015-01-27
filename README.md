@@ -104,7 +104,7 @@ If you need a trailing slash just set the attribute `trailingSlash: true`. E.g.
 
 ```js
 extension: {
-  required: false
+  required: false,
   trailingSlash: true
 }
 ```
@@ -116,5 +116,4 @@ This will output URL's without file extensions.
 
 
 ## Contributing
-
 We accept pull requests! A special thanks to XhmikosR for keeping things rolling.
