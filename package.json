@@ -34,7 +34,7 @@
     "watch": "cake watch"
   },
   "dependencies": {
-    "lodash": "~3.2.0",
+    "lodash": "~3.3.0",
     "slash": "~1.0.0"
   },
   "devDependencies": {
