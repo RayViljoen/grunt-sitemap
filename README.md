@@ -109,10 +109,10 @@ extension: {
 }
 ```
 
-By default the <loc> tag is generated for paths that contains file extensions.
-E.g.: '.html' or '.htm'. If you don't want URL's with file extensions to be included
+By default the `<loc>` tag is generated for paths that contains file extensions.
+E.g.: `.html` or `.htm`. If you don't want URLs with file extensions to be included
 in your sitemap, just add the attribute `extension: { required: false }`.
-This will output URL's without file extensions.
+This will output URLs without file extensions.
 
 
 ## Contributing
