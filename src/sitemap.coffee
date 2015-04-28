@@ -83,7 +83,7 @@ module.exports = (grunt) ->
 			    	rawUrlPath.replace /\.html/, '/', 'i'
 			    when typeof(extension) == 'object' && !extension.required && !extension.trailingSlash
 			    	# Remove extension without trailing slash
-			    	rawUrlPath.replace /\.html/, '', 'i'
+			    	rawUrlPath.replace /(\.html|\/)$/, '', 'i'
 			    else
 			    	# only return path with extension
 			    	rawUrlPath
