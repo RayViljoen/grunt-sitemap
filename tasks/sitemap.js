@@ -30,7 +30,7 @@
       };
       priority = (this.data.priority || 0.5).toString();
       pattern = this.data.pattern || path.join(root, '/**/*.html');
-      files = grunt.file.expand(pattern);
+      files = grunt.file.expand({ cwd: root }, pattern);
       files = _.map(files, function(file) {
         var fileStat, mtime, rawUrlPath, urlPath;
         if (file.match(/404\.html$/i)) {
