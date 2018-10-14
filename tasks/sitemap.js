@@ -17,7 +17,6 @@
 
 const fs = require('fs');
 const path = require('path');
-const slash = require('slash');
 
 module.exports = function(grunt) {
     grunt.registerMultiTask('sitemap', 'sitemap description', function() {
@@ -33,8 +32,8 @@ module.exports = function(grunt) {
         // Site root dir
         let root = path.normalize(this.data.siteRoot || '.');
 
-        // Convert the paths to Unix paths
-        const tempRoot = slash(root);
+        // Replace Windows slashes to unix ones
+        const tempRoot = root.replace(/\\/g, '/');
 
         if (tempRoot !== './') {
             root = tempRoot;
