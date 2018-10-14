@@ -69,7 +69,7 @@ module.exports = function(grunt) {
             let rawUrlPath;
 
             // Do not include 404 page
-            if (file.match(/404\.html$/i)) {
+            if (file.match(/404\.html?$/i)) {
                 return false;
             }
 
@@ -90,16 +90,16 @@ module.exports = function(grunt) {
             }
 
             // Remove index.html
-            rawUrlPath = rawUrlPath.replace(/(index)\.[A-z]+$/, '', 'i');
+            rawUrlPath = rawUrlPath.replace(/index\.[A-z]+$/i, '');
 
             const urlPath = (() => {
                 switch (false) {
                     case (typeof extension !== 'object') || Boolean(extension.required) || !extension.trailingSlash:
                         // Remove extension with trailing slash
-                        return rawUrlPath.replace(/\.html/, '/', 'i');
+                        return rawUrlPath.replace(/\.html?/i, '/');
                     case (typeof extension !== 'object') || Boolean(extension.required) || Boolean(extension.trailingSlash):
                         // Remove extension without trailing slash
-                        return rawUrlPath.replace(/(\.html|\/)$/, '', 'i');
+                        return rawUrlPath.replace(/(\.html?|\/)$/i, '');
                     default:
                         // only return path with extension
                         return rawUrlPath;
