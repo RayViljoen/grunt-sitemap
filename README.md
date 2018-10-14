@@ -2,18 +2,17 @@
 
 > A Grunt plugin for generating sitemaps
 
-[![NPM version](https://badge.fury.io/js/grunt-sitemap.svg)](http://badge.fury.io/js/grunt-sitemap)
-[![Dependency Status](https://david-dm.org/RayViljoen/grunt-sitemap.svg)](https://david-dm.org/RayViljoen/grunt-sitemap)
-[![devDependency Status](https://david-dm.org/RayViljoen/grunt-sitemap/dev-status.svg)](https://david-dm.org/RayViljoen/grunt-sitemap#info=devDependencies)
-
+[![NPM version](https://img.shields.io/npm/v/grunt-sitemap.svg)](https://www.npmjs.com/package/grunt-sitemap)
+[![Dependency Status](https://img.shields.io/david/RayViljoen/grunt-sitemap.svg)](https://david-dm.org/RayViljoen/grunt-sitemap)
+[![devDependency Status](https://img.shields.io/david/dev/RayViljoen/grunt-sitemap.svg)](https://david-dm.org/RayViljoen/grunt-sitemap?type=dev)
 
 ## Installation
 
 This plugin requires Grunt `~0.4.5`.
 
-If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out
-the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains
-how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as
+If you haven't used [Grunt](https://gruntjs.com/) before, be sure to check out
+the [Getting Started](https://gruntjs.com/getting-started) guide, as it explains
+how to create a [Gruntfile](https://gruntjs.com/sample-gruntfile) as well as
 install and use Grunt plugins. Once you're familiar with that process, you may
 install this plugin with this command:
 
@@ -28,24 +27,20 @@ this line of JavaScript:
 grunt.loadNpmTasks('grunt-sitemap');
 ```
 
-
 ## Configuration
 
 `sitemap` is a multitask, so you can use it similarly to `lint`, `watch` etc...
 
 ```js
 grunt.initConfig({
-
   sitemap: {
     dist: {
       pattern: ['**/*.html', '!**/google*.html'], // this will exclude 'google*.html'
       siteRoot: 'public/'
     }
   }
-
 });
 ```
-
 
 ### Options
 
@@ -109,11 +104,10 @@ extension: {
 }
 ```
 
-By default the `<loc>` tag is generated for paths that contains file extensions.
+By default the `<loc>` tag is generated for paths that contain file extensions.
 E.g.: `.html` or `.htm`. If you don't want URLs with file extensions to be included
 in your sitemap, just add the attribute `extension: { required: false }`.
 This will output URLs without file extensions.
-
 
 ## Contributing
 
