@@ -22,10 +22,9 @@
     "seo"
   ],
   "engines": {
-    "node": ">=0.8.0"
+    "node": ">=6"
   },
   "dependencies": {
-    "lodash": "~3.3.0",
     "slash": "~1.0.0"
   },
   "devDependencies": {

@@ -17,7 +17,6 @@
 
 const fs = require('fs');
 const path = require('path');
-const _ = require('lodash');
 const slash = require('slash');
 
 module.exports = function(grunt) {
@@ -67,7 +66,7 @@ module.exports = function(grunt) {
         let files = grunt.file.expand(pattern);
 
         // Remove root from path and prepend homepage url
-        files = _.map(files, function(file) {
+        files = files.map(file => {
             let rawUrlPath;
 
             // Do not include 404 page
@@ -122,7 +121,7 @@ module.exports = function(grunt) {
         });
 
         // Remove any falsy values (404.html returns false)
-        files = _.compact(files);
+        files = files.filter(Boolean);
 
         // -----------------------
         // Build xml
