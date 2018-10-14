@@ -8,7 +8,7 @@
 
 ## Installation
 
-This plugin requires Grunt `~0.4.5`.
+This plugin requires Grunt `>=0.4.0`.
 
 If you haven't used [Grunt](https://gruntjs.com/) before, be sure to check out
 the [Getting Started](https://gruntjs.com/getting-started) guide, as it explains

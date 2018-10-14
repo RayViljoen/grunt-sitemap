@@ -24,9 +24,17 @@
   "engines": {
     "node": ">=6"
   },
+  "scripts": {
+    "eslint": "eslint .",
+    "test": "npm run eslint"
+  },
   "dependencies": {},
   "devDependencies": {
-    "grunt": "~0.4.5"
+    "eslint": "^5.9.0",
+    "grunt": "^1.0.3"
+  },
+  "peerDependencies": {
+    "grunt": ">=0.4.0"
   },
   "files": [
     "tasks/*.js"
