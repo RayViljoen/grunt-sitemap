@@ -3,8 +3,9 @@
 > A Grunt plugin for generating sitemaps
 
 [![NPM version](https://img.shields.io/npm/v/grunt-sitemap.svg)](https://www.npmjs.com/package/grunt-sitemap)
+[![Build Status](https://img.shields.io/travis/RayViljoen/grunt-sitemap/master.svg)](https://travis-ci.org/RayViljoen/grunt-sitemap)
 [![Dependency Status](https://img.shields.io/david/RayViljoen/grunt-sitemap.svg)](https://david-dm.org/RayViljoen/grunt-sitemap)
-[![devDependency Status](https://img.shields.io/david/dev/RayViljoen/grunt-sitemap.svg)](https://david-dm.org/RayViljoen/grunt-sitemap?type=dev)
+[![devDependencies Status](https://img.shields.io/david/dev/RayViljoen/grunt-sitemap.svg)](https://david-dm.org/RayViljoen/grunt-sitemap?type=dev)
 
 ## Installation
 
