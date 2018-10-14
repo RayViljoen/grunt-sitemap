@@ -24,10 +24,6 @@
   "engines": {
     "node": ">=0.8.0"
   },
-  "scripts": {
-    "build": "cake build",
-    "watch": "cake watch"
-  },
   "dependencies": {
     "lodash": "~3.3.0",
     "slash": "~1.0.0"
