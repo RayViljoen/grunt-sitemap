@@ -36,7 +36,6 @@
     "grunt": "~0.4.5"
   },
   "files": [
-    "LICENSE-MIT",
-    "tasks"
+    "tasks/*.js"
   ]
 }
