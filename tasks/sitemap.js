@@ -19,7 +19,7 @@ const fs = require('fs');
 const path = require('path');
 
 module.exports = function(grunt) {
-    grunt.registerMultiTask('sitemap', 'sitemap description', function() {
+    grunt.registerMultiTask('sitemap', 'Grunt sitemap generator plugin', function() {
         // Read `homepage` from package.json
         const pkg = grunt.file.readJSON('package.json');
         let url = this.data.homepage || pkg.homepage;
