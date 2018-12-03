@@ -22,21 +22,21 @@
     "seo"
   ],
   "engines": {
-    "node": ">=0.8.0"
+    "node": ">=6"
   },
   "scripts": {
-    "build": "cake build",
-    "watch": "cake watch"
+    "eslint": "eslint .",
+    "test": "npm run eslint"
   },
-  "dependencies": {
-    "lodash": "~3.3.0",
-    "slash": "~1.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "grunt": "~0.4.5"
+    "eslint": "^5.9.0",
+    "grunt": "^1.0.3"
+  },
+  "peerDependencies": {
+    "grunt": ">=0.4.0"
   },
   "files": [
-    "LICENSE-MIT",
-    "tasks"
+    "tasks/*.js"
   ]
 }
