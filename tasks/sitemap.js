@@ -62,7 +62,7 @@ module.exports = function(grunt) {
         const pattern = this.data.pattern || path.join(root, '/**/*.html');
 
         // Glob root
-        let files = grunt.file.expand({ cwd: root }, pattern);
+        let files = grunt.file.expand(pattern);
 
         // Remove root from path and prepend homepage url
         files = files.map(file => {
