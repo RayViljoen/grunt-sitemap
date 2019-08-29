@@ -61,7 +61,7 @@ This is where indexing will begin and your sitemap be saved to.
 Pattern to match website files. Excludes `404.html` by default and converts `index.html` to directory path `/`.
 See [minimatch](https://github.com/isaacs/minimatch) for more on pattern matching.
 
-#### page
+#### pages
 
 * Type: `string[]`
 * Default: null
