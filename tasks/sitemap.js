@@ -61,6 +61,8 @@ module.exports = function(grunt) {
         // File pattern
         const pattern = this.data.pattern || path.join(root, '/**/*.html');
 
+        const pages = this.data.pages;
+
         // Glob root
         let files = grunt.file.expand(pattern);
 
@@ -141,6 +143,16 @@ module.exports = function(grunt) {
             xmlStr += `    <priority>${priority}</priority>\n`;
             xmlStr += '  </url>\n';
         }
+
+      // Create url nodes
+      for (const page of pages) {
+        xmlStr += '  <url>\n';
+        xmlStr += `    <loc>${url + page}</loc>\n`;
+        xmlStr += `    <lastmod>${new Date().toISOString()}</lastmod>\n`;
+        xmlStr += `    <changefreq>${changefreq}</changefreq>\n`;
+        xmlStr += `    <priority>${priority}</priority>\n`;
+        xmlStr += '  </url>\n';
+      }
 
         // Close xml
         xmlStr += '</urlset>';
