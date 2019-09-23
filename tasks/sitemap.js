@@ -61,6 +61,9 @@ module.exports = function(grunt) {
         // File pattern
         const pattern = this.data.pattern || path.join(root, '/**/*.html');
 
+        // Name the sitemap
+        const name = this.data.filename || 'sitemap';
+
         // Glob root
         let files = grunt.file.expand(pattern);
 
@@ -146,7 +149,7 @@ module.exports = function(grunt) {
         xmlStr += '</urlset>';
 
         // Write sitemap to root
-        grunt.file.write(path.join(root, 'sitemap.xml'), xmlStr);
+        grunt.file.write(path.join(root, `${name}.xml`), xmlStr);
 
         grunt.log.ok('Sitemap created successfully');
 

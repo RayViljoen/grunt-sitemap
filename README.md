@@ -83,6 +83,13 @@ Set this to override `<changefreq>` in sitemap.
 
 Set this to override `<priority>` in sitemap.
 
+#### filename
+
+* Type: `string`
+* Default: `sitemap`
+
+Set this to override the name of the output file, which is usually `sitemap.xml`.
+
 #### extension
 
 * Type: `object`
